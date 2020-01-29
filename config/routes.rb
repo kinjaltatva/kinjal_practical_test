@@ -7,5 +7,7 @@ Rails.application.routes.draw do
   end
   resources :relationships, only: [:create, :destroy]
   resources :tweets, only: [:create, :index]
+
+  get :user_profile, to: "relationships#user_profile"
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
