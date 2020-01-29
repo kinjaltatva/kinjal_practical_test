@@ -14,7 +14,12 @@ Doorkeeper.configure do
   end
 
   resource_owner_from_credentials do |_routes|
-    User.authenticate(params[:email], params[:password])
+    user = User.authenticate(params[:email], params[:password])
+    if user.present?
+      user
+    else
+      raise "Email/Password incorrect"
+    end
  end
 
   # If you didn't skip applications controller from Doorkeeper routes in your application routes.rb
