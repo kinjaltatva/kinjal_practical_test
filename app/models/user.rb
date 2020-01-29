@@ -11,6 +11,7 @@ class User < ApplicationRecord
   has_many :passive_relationships, class_name:  "Relationship", foreign_key: "followed_id", dependent:   :destroy
   has_many :followers, through: :passive_relationships, source: :follower
 
+  has_many :tweets
   # Check authentications
   def self.authenticate(email, password)
     user = User.find_for_authentication(email: email)
